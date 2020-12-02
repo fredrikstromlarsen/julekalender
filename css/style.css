@@ -1,0 +1,232 @@
+  :root {
+    --bg-1: #222;
+    --bg-2: #2a2a2a;
+    --box-shadow-1: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.25);
+    --box-shadow-2: inset 0.1rem 0.1rem 0.1rem rgba(255, 255, 255, 0.05);
+    --box-shadow-3: inset -0.1rem -0.1rem 0.1rem rgba(0, 0, 0, 0.25);
+    --border-radius-1: 0.5rem;
+  }
+
+  * {
+    font-family:
+      'Product Sans',
+      'IBM Plex Sans',
+      'Nunito',
+      sans-serif, monospace, serif;
+    line-height: 1.5em;
+    font-weight: 400;
+    color: #fff;
+    cursor: default;
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    scroll-behavior: smooth;
+    transition: 200ms;
+
+    user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+  }
+
+  span {
+    font-family:
+      'Product Sans',
+      'IBM Plex Mono',
+      'Courier Prime',
+      monospace, sans-serif, serif;
+  }
+
+  body {
+    background: var(--bg-1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  form {
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+
+    max-width: 30rem;
+    width: 30vw;
+    min-width: 20rem;
+
+    overflow: hidden;
+    border-radius: var(--border-radius-1);
+
+    box-shadow: var(--box-shadow-1), var(--box-shadow-2), var(--box-shadow-3);
+    background: var(--bg-2);
+  }
+
+  form>label {
+    margin: 1em;
+
+  }
+
+  form>input {
+    outline: none;
+    box-shadow: none;
+    color: #fff;
+    border: none;
+    background: none;
+    padding: 1rem;
+    font-size: 1.2em;
+  }
+
+  form>input[type="text"]:invalid {
+    /* content: '&#129324;' !important; */
+    background: #f001;
+  }
+
+  form>input[type="text"]:valid {
+    /* content: '&#x1F60A;' !important; */
+    background: #0f01;
+  }
+
+  form>input:active {
+    background: #0002 !important;
+  }
+
+  form>input:hover,
+  form>input:focus {
+    background: #0001;
+  }
+
+  input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  input:focus::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .cal {
+    width: min-content;
+    margin: 1rem auto;
+  }
+
+  .cal-wrapper {
+    background: var(--bg-2);
+    border-radius: var(--border-radius-1);
+    box-shadow: var(--box-shadow-1), var(--box-shadow-2), var(--box-shadow-3);
+    overflow: hidden;
+
+    width: 20rem;
+    max-width: 100%;
+    min-height: 10rem;
+    height: min-content;
+
+    margin: 1rem;
+  }
+
+  .cal-container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+
+    width: 100%;
+  }
+
+  .cal-container,
+  .cal-opened,
+  .cal-unopened {
+    height: 100%;
+  }
+
+  .cal-unopened {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .cal-unopened>p {
+    position: relative;
+
+    font-size: 4rem;
+    text-align: center;
+
+    color: var(--bg-1);
+    font-weight: 900;
+    text-shadow: -0.05rem -0.05rem 0.1rem #111, 0.05rem 0.05rem 0.1rem #363636;
+  }
+
+  .cal-unopened>* {
+    position: absolute;
+    margin: auto;
+  }
+
+  .today .cal-unopened p {
+    text-shadow: 0 0 0.5rem #fff8;
+    animation: subtleFlicker 2s alternate infinite ease-in-out;
+  }
+
+  .cal-openable p {
+    color: #fff;
+  }
+
+  .cal-opened {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem 1.25rem 1.5rem;
+    transform: translateY(-25%);
+    filter: opacity(0%);
+
+    transition: transform 500ms ease, filter 500ms ease;
+  }
+
+  .cal-opened>div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cal-opened>div>span {
+    font-size: 0.9rem;
+    color: #aaa;
+  }
+
+  .cal-opened>p {
+    font-size: 1rem;
+  }
+
+  /* Remove 000webhost Branding */
+  body > div:nth-child(2){
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    overflow: -moz-hidden-unscrollable;
+  }
+
+  /* Make grid "responsive" */
+  @media only screen and (min-width: 1676px) {
+    .cal {
+      min-width: calc(22rem*4 + 31.009px);
+    }
+  }
+  @media only screen and (max-width: 1675px) {
+    .cal {
+      min-width: calc(22rem*3 + 23.009px);
+    }
+  }
+  @media only screen and (max-width: 1120px) {
+    .cal {
+      min-width: calc(22rem*2 + 15.009px);
+    }
+  }
+  @media only screen and (max-width: 800px) {
+    .cal {
+      min-width: 22rem;
+    }
+  }
+
+  @keyframes subtleFlicker {
+    100%{
+      text-shadow: 0 0 1.5rem #fff8;
+    }
+  }
